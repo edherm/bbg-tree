@@ -25,15 +25,15 @@ Users will be able to:
 * D3
 
 ## Implementation Timeline
-* Phase 1
-    * Complete HTML and CSS for site elements
+* Phase 1 (1/6 through 1/7)
     * Render Basic Tree
-    * Import CSV Data
-* Phase 2
-    * Render Tree using Data
     * Make nodes selectable
-* Phase 3
+* Phase 2 (1/8 through 1/10)
+    * Import CSV Data
+    * Refactor Tree incorporating Data
     * Selecting nodes renders data
+* Phase 3 (1/10)
+    * Complete HTML and CSS for site elements
     * Production README
 
 ## (Bonus Features)
