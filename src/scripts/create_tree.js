@@ -41,7 +41,22 @@ export default () => {
       .key(function(d) { return d.genus; })
       .entries(data)
 
-    console.log(data);
+    // Test the data structure
+    // console.log(data);
     console.log(bbg_data);
+
+    svg.each(function(orientation) {
+      let svg = d3.select(this),
+        o = orientation.value;
+
+      // Layout the tree
+      let treemap = d3.tree().size(o.size);
+
+      let nodes = d3.hierarchy(bbg_data);
+
+      nodes = treemap(nodes);
+
+      let links = nodes.descendants().slice(1)
+    })
   });
 }
