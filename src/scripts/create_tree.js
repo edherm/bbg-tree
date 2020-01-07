@@ -1,3 +1,5 @@
+import bbg_data from "./convert_data";
+
 // import {bbgData} from "./data/bbg_data_test_slice.csv";
 
 export default () => {
@@ -28,7 +30,18 @@ export default () => {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.csv("src/data/bbg_data_test_slice.csv").then(function(data) {
+  // Convert csv data => each row becomes an object with columns as keys
+  d3.csv("src/data/bbg_data191204.csv").then(function(data) {
+    
+    // Convert data to hierarchical structure
+    let bbg_data = d3.nest()
+      .key(function(d) { return "root" })
+      .key(function(d) { return d.home; })
+      .key(function(d) { return d.collection; })
+      .key(function(d) { return d.genus; })
+      .entries(data)
+
     console.log(data);
+    console.log(bbg_data);
   });
 }
