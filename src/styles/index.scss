@@ -2,21 +2,17 @@ svg {
   border: 1px solid black;
 }
 
-circle {
-  cursor: pointer;
-}
-
-circle.branchNode {
+circle.node.branch {
   stroke: #3e2914;
   stroke-width: 3px;
 }
 
-circle.leafNode {
+circle.node.leaf {
   stroke: darkgreen;
   stroke-width: 2px;
 }
 
-.branchNode text { font: 12px sans-serif; }
+.node.branch text { font: 12px sans-serif; }
 
 .link {
   fill: #503316;
@@ -25,17 +21,17 @@ circle.leafNode {
 }
 
 .trunk {
-  stroke-width: 15px;
+  stroke-width: 10px;
 }
 
-.lowerBranches {
-  stroke-width: 7px;
+link.lower.branches {
+  stroke-width: 5px;
 }
 
-.middleBranches {
+link.middle.branches {
   stroke-width: 3px;
 }
 
-.upperBranches {
+link.upper.branches {
   stroke-width: 1px;
 }
