@@ -1,3 +1,18 @@
+svg {
+  border: 1px solid black; }
+
+circle.node {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px; }
+
+.node text {
+  font: 12px sans-serif; }
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px; }
 
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtYWluLmNzcyIsInNvdXJjZXNDb250ZW50IjpbXSwic291cmNlUm9vdCI6IiJ9*/
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvc3R5bGVzL2luZGV4LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQSwwQkFBMEI7O0FBRTFCO0FBQ0E7QUFDQTtBQUNBLG9CQUFvQjs7QUFFcEI7QUFDQSx3QkFBd0I7O0FBRXhCO0FBQ0E7QUFDQTtBQUNBLG9CQUFvQiIsImZpbGUiOiJtYWluLmNzcyIsInNvdXJjZXNDb250ZW50IjpbInN2ZyB7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGJsYWNrOyB9XG5cbmNpcmNsZS5ub2RlIHtcbiAgZmlsbDogI2ZmZjtcbiAgc3Ryb2tlOiBzdGVlbGJsdWU7XG4gIHN0cm9rZS13aWR0aDogM3B4OyB9XG5cbi5ub2RlIHRleHQge1xuICBmb250OiAxMnB4IHNhbnMtc2VyaWY7IH1cblxuLmxpbmsge1xuICBmaWxsOiBub25lO1xuICBzdHJva2U6ICNjY2M7XG4gIHN0cm9rZS13aWR0aDogMnB4OyB9XG4iXSwic291cmNlUm9vdCI6IiJ9*/
