@@ -1,5 +1,19 @@
+import convertFetchedData from "./convert_fetched_data";
+
+const branchLvl = (d) => {
+  if (d.depth === 4) {
+    return "link upperBranches"
+  } else if (d.depth === 3) {
+    return "link middleBranches"
+  } else if (d.depth === 2) {
+    return "link lowerBranches"
+  } else {
+    return "link trunk"
+  }
+}
+
 export default () => {
-  const margin = { top: 75, right: 75, bottom: 75, left: 75 },
+  const margin = { top: 25, right: 25, bottom: 25, left: 25 },
     width = 1400 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
@@ -30,64 +44,27 @@ export default () => {
   d3.csv("src/data/bbg_data191204.csv").then(function(data) {
     
     // Convert data to hierarchical structure
-    let bbg_data = d3.nest()
-      .key(function(d) {
-        return ""
-      })
-      .key(function(d) {
-        return d.home;
-      })
-      .key(function(d) { 
-        return d.collection; 
-      })
-      .key(function(d) { 
-        return d.genus; 
-      })
-      .entries(data)
-
-    // Force data into correct format for d3.hierarchy and .tree
-    bbg_data.forEach(function(d) {
-      d.name = d.key;
-      d.children = d.values;
-      d.children.forEach(function(child){
-        child.name = child.key;
-        child.children = child.values;
-        child.children.forEach(function(grandchild) {
-          grandchild.name = grandchild.key;
-          grandchild.children = grandchild.values;
-          grandchild.children.forEach(function(greatgrandchild) {
-            greatgrandchild.name = greatgrandchild.key;
-            greatgrandchild.children = greatgrandchild.values;
-          })
-        })
-      })
-    })
-
-    const hierarchical_data = bbg_data.map
+    let bbg_data = convertFetchedData(data);
 
     svg.each(function(orientation) {
-      
       const svg = d3.select(this),
         o = orientation.value;
 
-      // Create a tree
+      // Create tree
       let treemap = d3.tree().size(o.size);
 
-      let nodes = d3.hierarchy(...bbg_data);
+      let nodes = d3.hierarchy(bbg_data);
       
       nodes = treemap(nodes);
 
-      debugger
-      let links = nodes.descendants().slice(1);
+      // Render and classify all links
+      const links = nodes.descendants().slice(1);
 
-      console.log(links)
-
-      // Link lines
       svg.selectAll(".link")
         .data(links)
         .enter()
         .append("path")
-        .attr("class", "link")
+        .attr("class", function(d) { return branchLvl(d); })
         .attr("d", function(d) {
           return (
             "M" +
@@ -107,29 +84,55 @@ export default () => {
             "," +
             o.y(d.parent)
           );
-
         })
-        // Create node circles
-        var node = svg
-          .selectAll(".node")
-          .data(nodes.descendants())
-          .enter()
-          .append("g");
-        node
-          .append("circle")
-          .attr("class", "node")
-          .attr("r", 4.5)
-          .attr("cx", o.x)
-          .attr("cy", o.y);
 
-        node
-          .append("text")
-          .text(function(d) {
-            return d.data.key;
-          })
-          .attr("x", o.x)
-          .attr("dx", 5)
-          .attr("y", o.y);
+      // Group branch and leaf nodes
+      let branchNodes = [];
+      let leafNodes = [];
+      nodes.descendants().forEach(node => {
+        if (node.depth === 4){
+          leafNodes.push(node);
+        } else {
+          branchNodes.push(node);
+        }
+      })      
+
+      // Create leafNode diamonds
+      let leafNode = svg
+        .selectAll(".leafNode")
+        .data(leafNodes)
+        .enter()
+        .append("g");
+      leafNode
+        .append("circle")
+        .attr("class", ".leafNode")
+        .attr("r", 4.5)
+        .attr("cx", o.x)
+        .attr("cy", o.y);
+
+      // Create branchNode circles
+      let branchNode = svg
+        .selectAll(".branchNode")
+        .data(branchNodes)
+        .enter()
+        .append("g");
+      branchNode
+        .append("circle")
+        .attr("class", "branchNode")
+        .attr("r", 4.5)
+        .attr("cx", o.x)
+        .attr("cy", o.y);
+
+      branchNode
+        .append("text")
+        .text(function(d) {
+          return d.data.name;
+        })
+        .attr("x", o.x)
+        .attr("dx", 5)
+        .attr("y", o.y);
+
+
     })
     
   });
