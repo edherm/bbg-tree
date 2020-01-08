@@ -2,14 +2,16 @@ svg {
   border: 1px solid black;
 }
 
+circle {
+  cursor: pointer;
+}
+
 circle.branchNode {
-  fill: #654321;
   stroke: #3e2914;
   stroke-width: 3px;
 }
 
 circle.leafNode {
-  fill: forestgreen;
   stroke: darkgreen;
   stroke-width: 2px;
 }
@@ -18,6 +20,7 @@ circle.leafNode {
 
 .link {
   fill: #503316;
+  fill-opacity: 30%;
   stroke: #654321;
 }
 
@@ -27,7 +30,6 @@ circle.leafNode {
 
 .lowerBranches {
   stroke-width: 7px;
-  height: 20px;
 }
 
 .middleBranches {
