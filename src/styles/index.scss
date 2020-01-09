@@ -2,17 +2,17 @@ svg {
   border: 1px solid black;
 }
 
-circle.node.branch {
+circle.branches {
   stroke: #3e2914;
   stroke-width: 3px;
 }
 
-circle.node.leaf {
+circle.leaves {
   stroke: darkgreen;
   stroke-width: 2px;
 }
 
-.node.branch text { font: 12px sans-serif; }
+text { font: 12px sans-serif; }
 
 .link {
   fill: #503316;
