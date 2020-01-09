@@ -20,7 +20,7 @@ BBG,Bonsai,Quercus,robur,English Oak,Fagaceae,20100986,G
 BBG,Bonsai,Quercus,rubra,Red Oak,Fagaceae,20120641,W
 BBG,Bonsai,Quercus,rubra,Red Oak,Fagaceae,20120642,W
 BBG,Boundary Plantings,Quercus,dentata,Daimyo Oak,Fagaceae,X00311,U
-BBG,Boundary Plantings,Quercus,glandulifera var. brevipedunculata,Quercus glandulifera var. brevipedunculata,Fagaceae,X00293,U
+BBG,Boundary Plantings,Quercus,glandulifera var. brevipedunculata,,Fagaceae,X00293,U
 BBG,Boundary Plantings,Quercus,robur,English Oak,Fagaceae,X00309,U
 BBG,Boundary Plantings,Quercus,rubra,Red Oak,Fagaceae,X02609,U
 BBG,Boundary Plantings,Quercus,variabilis,Oriental Oak,Fagaceae,670821,G
@@ -81,7 +81,7 @@ BBG,Native Flora Garden,Quercus,stellata,Post Oak,Fagaceae,X10511,U
 BBG,Native Flora Garden,Quercus,velutina,Black Oak,Fagaceae,X10016,U
 BBG,Native Flora Garden,Quercus,velutina,Black Oak,Fagaceae,X10200,U
 BBG,Native Flora Garden,Quercus,velutina,Black Oak,Fagaceae,X10203,U
-BBG,Nursery,Quercus,aliena var. acuteserrata,Quercus aliena var. acuteserrata,Fagaceae,20150787,W
+BBG,Nursery,Quercus,aliena var. acuteserrata,,Fagaceae,20150787,W
 BBG,Nursery,Quercus,bicolor,Swamp White Oak,Fagaceae,X10358,W
 BBG,Nursery,Quercus,× brittonii,Hybrid Oak,Fagaceae,20180756,W
 BBG,Nursery,Quercus,coccinea,Scarlet Oak,Fagaceae,20161158,W
@@ -509,7 +509,7 @@ BBG,Osborne Garden,Prunus,Shirotae',Japanese Flowering Cherry,Rosaceae,X02465,U
 BBG,Japanese Hill-and-Pond Garden,Prunus,Shogetsu',Japanese Flowering Cherry,Rosaceae,700204,G
 BBG,Osborne Garden,Prunus,Shogetsu',Japanese Flowering Cherry,Rosaceae,710341,G
 BBG,Japanese Hill-and-Pond Garden,Prunus,Snow Goose',Japanese Flowering Cherry,Rosaceae,20160144,G
-BBG,Japanese Hill-and-Pond Garden,Prunus,sp.,Prunus sp.,Rosaceae,20001438,G
+BBG,Japanese Hill-and-Pond Garden,Prunus,sp.,,Rosaceae,20001438,G
 BBG,Cherry Esplanade,Prunus,Spire',Flowering Cherry,Rosaceae,700479,G
 BBG,Cherry Esplanade,Prunus,Spire',Flowering Cherry,Rosaceae,840779,G
 BBG,Bonsai,Prunus,× subhirtella,Higan Cherry,Rosaceae,X00384,U
@@ -535,20 +535,20 @@ BBG,Cherry Esplanade,Prunus,× yedoensis,Yoshino Cherry,Rosaceae,20120167,G
 BBG,Cherry Esplanade,Prunus,× yedoensis,Yoshino Cherry,Rosaceae,20120244,G
 BBG,Japanese Hill-and-Pond Garden,Prunus,× yedoensis,Yoshino Cherry,Rosaceae,830145,G
 BBG,Native Flora Garden,Magnolia,acuminata,Cucumber Tree,Magnoliaceae,20080310,G
-BBG,Magnolia Plaza,Magnolia,Ann',Magnolia Ann',Magnoliaceae,20030333,G
-BBG,Bonsai,Magnolia,Ann',Magnolia Ann',Magnoliaceae,20110023,G
-BBG,Magnolia Plaza,Magnolia,Big Pink',Magnolia Big Pink',Magnoliaceae,20080251,G
-BBG,Magnolia Plaza,Magnolia,× brooklynensis #204,Magnolia × brooklynensis #204,Magnoliaceae,20070177,G
+BBG,Magnolia Plaza,Magnolia,Ann',,Magnoliaceae,20030333,G
+BBG,Bonsai,Magnolia,Ann',,Magnoliaceae,20110023,G
+BBG,Magnolia Plaza,Magnolia,Big Pink',,Magnoliaceae,20080251,G
+BBG,Magnolia Plaza,Magnolia,× brooklynensis #204,,Magnoliaceae,20070177,G
 BBG,Nursery,Magnolia,× brooklynensis Evamaria',Evamaria' magnolia,Magnoliaceae,20170350,G
 BBG,Streetscape,Magnolia,× brooklynensis Evamaria',Evamaria' magnolia,Magnoliaceae,910301,G
-BBG,Magnolia Plaza,Magnolia,× brooklynensis Hattie Carthan',Magnolia × brooklynensis Hattie Carthan',Magnoliaceae,20140343,G
-BBG,Fragrance Garden,Magnolia,× brooklynensis Hattie Carthan',Magnolia × brooklynensis Hattie Carthan',Magnoliaceae,871193,G
-BBG,Plant Family Collection,Magnolia,× brooklynensis Yellow Bird',Magnolia × brooklynensis Yellow Bird',Magnoliaceae,910310,G
-BBG,Nursery,Magnolia,cylindrica,Magnolia cylindrica,Magnoliaceae,20071241,G
+BBG,Magnolia Plaza,Magnolia,× brooklynensis Hattie Carthan',,Magnoliaceae,20140343,G
+BBG,Fragrance Garden,Magnolia,× brooklynensis Hattie Carthan',,Magnoliaceae,871193,G
+BBG,Plant Family Collection,Magnolia,× brooklynensis Yellow Bird',,Magnoliaceae,910310,G
+BBG,Nursery,Magnolia,cylindrica,,Magnoliaceae,20071241,G
 BBG,Magnolia Plaza,Magnolia,denudata,Yulan,Magnoliaceae,320010,G
-BBG,Magnolia Plaza,Magnolia,Elizabeth',Magnolia Elizabeth',Magnoliaceae,790512,G
-BBG,Osborne Garden,Magnolia,Elizabeth',Magnolia Elizabeth',Magnoliaceae,820090,G
-BBG,Magnolia Plaza,Magnolia,Galaxy',Magnolia Galaxy',Magnoliaceae,20080254,G
+BBG,Magnolia Plaza,Magnolia,Elizabeth',,Magnoliaceae,790512,G
+BBG,Osborne Garden,Magnolia,Elizabeth',,Magnoliaceae,820090,G
+BBG,Magnolia Plaza,Magnolia,Galaxy',,Magnoliaceae,20080254,G
 BBG,Discovery Garden,Magnolia,grandiflora,Southern Magnolia,Magnoliaceae,20140676,G
 BBG,Washington Avenue Borders,Magnolia,grandiflora D.D. Blanchard',Southern Magnolia,Magnoliaceae,20061233,G
 BBG,Magnolia Plaza,Magnolia,grandiflora Edith Bogue',Southern Magnolia,Magnoliaceae,660699,G
@@ -567,21 +567,21 @@ BBG,Magnolia Plaza,Magnolia,kobus,Kobus Magnolia,Magnoliaceae,X00046,U
 BBG,Magnolia Plaza,Magnolia,× loebneri,Loebner Magnolia,Magnoliaceae,X00045,U
 BBG,Magnolia Plaza,Magnolia,× loebneri,Loebner Magnolia,Magnoliaceae,X00050,U
 BBG,Magnolia Plaza,Magnolia,× loebneri Leonard Messel',Leonard Messel Magnolia,Magnoliaceae,860579,G
-BBG,Magnolia Plaza,Magnolia,× loebneri Merrill',Magnolia × loebneri Merrill',Magnoliaceae,730031,G
-BBG,Osborne Garden,Magnolia,Lois',Magnolia Lois',Magnoliaceae,20050656,G
-BBG,Magnolia Plaza,Magnolia,Lois',Magnolia Lois',Magnoliaceae,20080750,G
-BBG,Discovery Garden,Magnolia,Lois',Magnolia Lois',Magnoliaceae,20150132,G
-BBG,Streetscape,Magnolia,Lois',Magnolia Lois',Magnoliaceae,910306,G
+BBG,Magnolia Plaza,Magnolia,× loebneri Merrill',,Magnoliaceae,730031,G
+BBG,Osborne Garden,Magnolia,Lois',,Magnoliaceae,20050656,G
+BBG,Magnolia Plaza,Magnolia,Lois',,Magnoliaceae,20080750,G
+BBG,Discovery Garden,Magnolia,Lois',,Magnoliaceae,20150132,G
+BBG,Streetscape,Magnolia,Lois',,Magnoliaceae,910306,G
 BBG,Boundary Plantings,Magnolia,macrophylla,Bigleaf Magnolia,Magnoliaceae,20030701,G
 BBG,Nursery,Magnolia,macrophylla,Bigleaf Magnolia,Magnoliaceae,20071251,G
 BBG,Nursery,Magnolia,macrophylla,Bigleaf Magnolia,Magnoliaceae,20071283,G
 BBG,Discovery Garden,Magnolia,macrophylla,Bigleaf Magnolia,Magnoliaceae,20170314,G
-BBG,Magnolia Plaza,Magnolia,Marillyn',Magnolia Marillyn',Magnoliaceae,20010236,G
-BBG,Magnolia Plaza,Magnolia,Marillyn',Magnolia Marillyn',Magnoliaceae,20160181,G
-BBG,Magnolia Plaza,Magnolia,Pinkie',Magnolia Pinkie',Magnoliaceae,20030332,G
+BBG,Magnolia Plaza,Magnolia,Marillyn',,Magnoliaceae,20010236,G
+BBG,Magnolia Plaza,Magnolia,Marillyn',,Magnoliaceae,20160181,G
+BBG,Magnolia Plaza,Magnolia,Pinkie',,Magnoliaceae,20030332,G
 BBG,Plant Family Collection,Magnolia,salicifolia,Willow-Leaved Magnolia,Magnoliaceae,610388,U
 BBG,Magnolia Plaza,Magnolia,salicifolia Wada's Memory',Willow-Leaved Magnolia,Magnoliaceae,20080256,G
-BBG,Magnolia Plaza,Magnolia,Sayonara',Magnolia Sayonara',Magnoliaceae,20030334,G
+BBG,Magnolia Plaza,Magnolia,Sayonara',,Magnoliaceae,20030334,G
 BBG,Nursery,Magnolia,sieboldii,Oyama Magnolia,Magnoliaceae,20071242,G
 BBG,PFC-3A,Magnolia,sieboldii,Oyama Magnolia,Magnoliaceae,20180285,G
 BBG,Magnolia Plaza,Magnolia,sieboldii,Oyama Magnolia,Magnoliaceae,780270,G
@@ -602,7 +602,7 @@ BBG,Magnolia Plaza,Magnolia,stellata Rubra',Star Magnolia,Magnoliaceae,710141,G
 BBG,Native Flora Garden,Magnolia,tripetala,Umbrella Magnolia,Magnoliaceae,20070399,G
 BBG,Plant Family Collection,Magnolia,tripetala,Umbrella Magnolia,Magnoliaceae,20140663,G
 BBG,Discovery Garden,Magnolia,tripetala,Umbrella Magnolia,Magnoliaceae,20140711,G
-BBG,Plant Family Collection,Magnolia,× veitchii Columbus',Magnolia × veitchii Columbus',Magnoliaceae,960140,G
+BBG,Plant Family Collection,Magnolia,× veitchii Columbus',,Magnoliaceae,960140,G
 BBG,Native Flora Garden,Magnolia,virginiana,Sweet Bay,Magnoliaceae,20000959,W
 BBG,Native Flora Garden,Magnolia,virginiana,Sweet Bay,Magnoliaceae,20080649,G
 BBG,Phase 3B,Magnolia,virginiana,Sweet Bay,Magnoliaceae,20190145,G
@@ -624,7 +624,7 @@ BBG,Visitor Center,Magnolia,virginiana var. australis Green Shadow',Swamp Magnol
 BBG,Phase 3B,Magnolia,virginiana var. australis Green Shadow',Swamp Magnolia,Magnoliaceae,20190159,G
 BBG,Phase 3B,Magnolia,virginiana var. australis Green Shadow',Swamp Magnolia,Magnoliaceae,20190531,G
 BBG,Magnolia Plaza,Magnolia,virginiana var. australis Sweet Thing',Dwarf Sweet Bay,Magnoliaceae,20140664,G
-BBG,Streetscape,Magnolia,Vulcan',Magnolia Vulcan',Magnoliaceae,930427,G
+BBG,Streetscape,Magnolia,Vulcan',,Magnoliaceae,930427,G
 BBG,Plant Family Collection,Aesculus,× carnea,Red Horsechestnut,Sapindaceae,220007,U
 BBG,Plant Family Collection,Aesculus,× carnea Briotii',Red Horsechestnut,Sapindaceae,20110404,U
 BBG,Boundary Plantings,Aesculus,chinensis,Chinese Horse Chestnut,Sapindaceae,20150102,W
@@ -667,7 +667,7 @@ BBG,Native Flora Garden,Betula,lenta,Sweet Birch,Betulaceae,X02713,U
 BBG,Native Flora Garden,Betula,lenta,Sweet Birch,Betulaceae,X10163,U
 BBG,Native Flora Garden,Betula,lenta,Sweet Birch,Betulaceae,X10164,U
 BBG,Bonsai,Betula,lenta subsp. uber,Virginia Roundleaf Birch,Betulaceae,20080647,G
-BBG,Nursery,Betula,litwinowii,Betula litwinowii,Betulaceae,20130674,W
+BBG,Nursery,Betula,litwinowii,,Betulaceae,20130674,W
 BBG,Boundary Plantings,Betula,mandshurica var. japonica,Japanese White Birch,Betulaceae,20001361,W
 BBG,Japanese Hill-and-Pond Garden,Betula,mandshurica var. japonica Whitespire',Manchurian Birch,Betulaceae,880090,G
 BBG,Nursery,Betula,michauxii,Newfoundland dwarf birch,Betulaceae,20140898,G
@@ -707,7 +707,7 @@ BBG,Native Flora Garden,Betula,populifolia,Gray Birch,Betulaceae,X10219,U
 BBG,Native Flora Garden,Betula,populifolia,Gray Birch,Betulaceae,X10220,U
 BBG,Native Flora Garden,Betula,populifolia,Gray Birch,Betulaceae,X10237,U
 BBG,Visitor Center,Betula,populifolia Whitespire',Gray Birch,Betulaceae,20120194,G
-BBG,Boundary Plantings,Betula,procurva,Betula procurva,Betulaceae,20061345,W
+BBG,Boundary Plantings,Betula,procurva,,Betulaceae,20061345,W
 BBG,Boundary Plantings,Betula,pubescens,White Birch,Betulaceae,20001363,W
 BBG,Boundary Plantings,Betula,pubescens,White Birch,Betulaceae,20011199,G
 BBG,Boundary Plantings,Betula,pubescens,White Birch,Betulaceae,20011201,G
@@ -753,4 +753,4 @@ BBG,Nursery,Citrus,reticulata,Mandarin Orange,Rutaceae,990338,G
 BBG,Nursery,Citrus,reticulata Owari',Mandarin Orange,Rutaceae,20161121,G
 BBG,Nursery,Citrus,sinensis,Sweet Orange,Rutaceae,20161117,G
 BBG,Nursery,Citrus,sinensis Cara Cara',Navel Orange,Rutaceae,20170783,G
-BBG,Nursery,Citrus,Yuzu',Citrus Yuzu',Rutaceae,20061126,G
+BBG,Nursery,Citrus,Yuzu',,Rutaceae,20061126,G

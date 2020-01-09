@@ -2,38 +2,44 @@ svg {
   border: 1px solid black;
 }
 
-circle.branchNode {
-  fill: #654321;
-  stroke: #3e2914;
+circle.branches {
+  fill: rgba(241, 107, 30, 0.683);
   stroke-width: 3px;
+  stroke: rgb(89, 66, 54);
 }
 
-circle.leafNode {
-  fill: forestgreen;
-  stroke: darkgreen;
+circle.leaves {
+  stroke: rgb(152, 199, 45);
   stroke-width: 2px;
 }
 
-.branchNode text { font: 12px sans-serif; }
+text { font: 12px sans-serif; }
 
 .link {
-  fill: #503316;
-  stroke: #654321;
+  stroke: rgba(241, 107, 30, 0.683);
+  fill: rgb(89, 66, 54);
+  fill-opacity: 30%;
 }
 
-.trunk {
-  stroke-width: 15px;
+.link.trunk {
+  stroke: rgb(89, 66, 54);
+  stroke-width: 12px;
 }
 
-.lowerBranches {
-  stroke-width: 7px;
-  height: 20px;
+.middle.branches, .link.leaves {
+  stroke: rgb(89, 66, 54);
+  
+  fill-opacity: 30%;
 }
 
-.middleBranches {
-  stroke-width: 3px;
+link.lower.branches {
+  stroke-width: 7.5px;
 }
 
-.upperBranches {
+link.middle.branches {
+  stroke-width: 3.75px;
+}
+
+.link.leaves {
   stroke-width: 1px;
 }
