@@ -207,12 +207,12 @@ export default () => {
     }
 
     // Recursively collapse all nodes each collection contains
-    root.children[0].children.forEach(collection => {
-      collection.descendants().forEach(child => {
-        child._children = child.children;
-        child.children = null;
-      });
-    });
+    // root.children[0].children.forEach(collection => {
+    //   collection.descendants().forEach(child => {
+    //     child._children = child.children;
+    //     child.children = null;
+    //   });
+    // });
 
     update(root);    
   });
