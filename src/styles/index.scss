@@ -3,35 +3,43 @@ svg {
 }
 
 circle.branches {
-  stroke: #3e2914;
+  fill: rgba(241, 107, 30, 0.683);
   stroke-width: 3px;
+  stroke: rgb(89, 66, 54);
 }
 
 circle.leaves {
-  stroke: darkgreen;
+  stroke: rgb(152, 199, 45);
   stroke-width: 2px;
 }
 
 text { font: 12px sans-serif; }
 
 .link {
-  fill: #503316;
+  stroke: rgba(241, 107, 30, 0.683);
+  fill: rgb(89, 66, 54);
   fill-opacity: 30%;
-  stroke: #654321;
 }
 
-.trunk {
-  stroke-width: 10px;
+.link.trunk {
+  stroke: rgb(89, 66, 54);
+  stroke-width: 12px;
+}
+
+.middle.branches, .link.leaves {
+  stroke: rgb(89, 66, 54);
+  
+  fill-opacity: 30%;
 }
 
 link.lower.branches {
-  stroke-width: 5px;
+  stroke-width: 7.5px;
 }
 
 link.middle.branches {
-  stroke-width: 3px;
+  stroke-width: 3.75px;
 }
 
-link.upper.branches {
+.link.leaves {
   stroke-width: 1px;
 }

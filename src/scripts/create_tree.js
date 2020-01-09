@@ -55,16 +55,14 @@ export default () => {
     root.y0 = 0;
 
     // Collapse node and recursively collapse all children
-    const collapse = d => {
-      if(d.children) {
-        d._children = d.children
-        d._children.forEach(collapse)
-        d.children = null
-      }
-    }
+    // const collapse = d => {
+    //   if(d.children) {
+    //     d._children = d.children
+    //     d._children.forEach(collapse)
+    //     d.children = null
+    //   }
+    // }
 
-    // Collapse after collections
-    
     const update = source => {
       // Categorize nodes and links
       let nodes = treemap(root);
@@ -98,7 +96,7 @@ export default () => {
         })
         .attr("r", 7)
         .style("fill", d => {
-          return d.children ? "#654321" : "#fff";
+          return d.children ? "rgb(89, 66, 54)" : "rgb(64, 125, 194)";
         });
 
       // Node labels
@@ -122,10 +120,10 @@ export default () => {
         .attr("transform", d => { 
           return `translate(${d.y}, ${d.x})`; });
       
-      nodeUpdate.select('.branches')
+      nodeUpdate.select('circle.branches')
         .attr('r', 7)
         .style("fill", d => { 
-          return d.children ? "#503316" : "#fff"; 
+          return d.children ? "rgb(89, 66, 54)" : "rgb(64, 125, 194)"; 
         })
         .attr('cursor', 'pointer');
 
@@ -194,7 +192,9 @@ export default () => {
 
       // Handle click - set visibility property
       const click = d => {
-        if (d.children) {
+        if (d.depth === 4) {
+          console.log("leaf node!")
+        } else if (d.children) {
           d._children = d.children;
           d.children = null;
         } else {
@@ -202,15 +202,18 @@ export default () => {
           d._children = null;
         }
         update(d);
+        console.log(d)
       }
     }
 
-    // root.children[0].children.forEach(collapse);
-    // root.children[0].children.forEach((child => { 
-    //   child.children = child._children;
-    //   child._children = null;
-    // }));
-    
+    // Recursively collapse all nodes each collection contains
+    root.children[0].children.forEach(collection => {
+      collection.descendants().forEach(child => {
+        child._children = child.children;
+        child.children = null;
+      });
+    });
+
     update(root);    
   });
 }
