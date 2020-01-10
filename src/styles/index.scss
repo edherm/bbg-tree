@@ -8,7 +8,7 @@ h1, h3 {
 body {
  background-image: url("https://lh3.googleusercontent.com/kSa3rxfwN9jX8UN-CBDvGIp10j7EDJK0mb6Pc_8QkIVvxpI8UalA5t0f0AxsMMYgiGPEcdB0RZfpGURweNs9S4n62Wmv-T9GKtQ1-8Oh2rnRUaVwp-69XsCGsxiOUGR4Sfkhl4uSEO9T5AdgGnpzncfBmixQSC2gOgRlwNdvCRIqbtHWF7TrNAXmzWMSXjHCgBXKgXL4vZhSr1kCrdnJ1yLR68UyIJQVrXIg7lwD2wYoWAyskjznBAA5IG5FRll7iA7SUSEVf_uwMjKN9D5CfvLYgKXId2CYXK5tmn8gdGunDY6DaBD38vb7xcSkvlKfC2j7s2mhYveascwlbZj6ntFdK7oBMJHV7uXU6XR9-FhZNBQ5dWNP2gGYsyq4EbUx0y9JBQbh3G8idfUy0fAOIm_oEl7wFX-vvuMFQvzyQzpbE6SSn9_ODjOGU15ZVENG1dLP3Ygv6OGG8vvjV2dtxf6A_ClkglqDQxijBItzP-zDkI7OYzdrYTfwRX180cXyo1LOK6SxL6GkjPdhIGQmxrYLESRnb9n7Ivo3houNbWoKnhRdq4f_QEsN9zLRMI1KlJ-5L6VBmufEOGCLo8eEHx6gpAYpsrZaIQoY6nss4qg1enQx4qSiub6ItrOmEi37aG6JLvYVDeFKBPBlGxFJ7ZMHzkDqyAIVkIqYyip66fZsettjMtFYZQ=w2416-h1358-no");
  background-repeat: no-repeat;
- background-size: 100%;
+ background-size: 90%;
  background-blend-mode: lighten;
  background-position: center;
  background-color: #cccccc;
@@ -62,6 +62,7 @@ img.link-logo {
 }
 
 .header-right > ul {
+  display: flex;
   margin-left: 0;
 }
 
