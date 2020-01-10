@@ -78,15 +78,18 @@ export default () => {
       nodeEnter
         .append("text")
         .text(d => {
-          return d.data.name.commonName
-            ? `- ${d.data.name.commonName} -`
-            : `- ${d.data.name} -`; 
+          if (d.depth > 0) {
+            return d.data.name.commonName
+              ? `- ${d.data.name.commonName} -`
+              : `- ${d.data.name} -`; 
+          }
         })
         .attr("x", d => { return d.children || d._children ? -13 : 13; })
         .attr("dy", ".35em")
         .attr("class", d => {
           return `${klass(d)}`;
         })
+        .attr("background-color", "rgb(152, 199, 45)")
         .attr("text-anchor", d => { return d.children || d._children ? "end" : "start"; })
       
       // Execute updating nodes
@@ -123,11 +126,9 @@ export default () => {
       d3.selectAll("circle.leaves")
         .enter()
         .on("mouseOver", d => {
-          debugger
           return onMouseOver(d);
         })
         .on("mouseOut", d => {
-          debugger
            return onMouseOut(d);
         });
     
