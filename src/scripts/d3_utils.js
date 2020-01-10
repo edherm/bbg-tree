@@ -14,13 +14,13 @@ const klass = d => {
 
 const onMouseOver = d => {
   if (d.depth === 4) {
-    console.log(d);
+    // console.log(d);
   }
 };
 
 const onMouseOut = d => {
   if (d.depth === 4) {
-    console.log("goodbye");
+    // console.log("goodbye");
   }
 };
 
