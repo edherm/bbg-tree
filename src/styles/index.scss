@@ -1,6 +1,153 @@
-svg {
-  border: 1px solid black;
+/// RESET ///
+
+h1, h3 {
+  font-family: 'Tinos', serif;
+  font-style: italic;
 }
+
+body, li, text, h2 {
+  font-family: 'Arvo', serif;
+  color: rgb(64, 125, 194);
+}
+
+text.trunk {
+  color: rgb(64, 125, 194);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  display: flex;
+}
+
+ul {
+  list-style: none;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+/// Header ///
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1200px;
+}
+
+img.link-logo {
+  height: 40px;
+}
+
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+.header-right > ul {
+  margin-left: 0;
+}
+
+.header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-center > h1 {
+  margin-bottom: 5px;
+}
+
+.header-center > h3 {
+  margin-top: 0;
+}
+
+.header-left {
+  display: flex;
+  width: 100px;
+  margin-left: 20px;
+}
+
+.header-left > img {
+  height: 120px;
+}
+
+/// Footer ///
+footer {
+  display: flex;
+}
+
+footer > h3 {
+  display: flex;
+}
+
+footer > ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin-top: 0;
+}
+
+/// Main ///
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category-ul-top {
+  display: flex;
+  margin-bottom: 0;
+  position: absolute;
+}
+
+.category-ul-bottom {
+  display: flex;
+  margin-bottom: 0;
+  position: absolute;
+}
+
+.category-lis {
+  position: relative;
+}
+
+.category-ul-top > .category-lis {
+  bottom: 420px;
+}
+
+.category-ul-bottom > .category-lis {
+  top: 390px;
+}
+li.category-lis.collection {
+  margin-right: 100px;
+}
+
+.category-lis.specimen {
+  margin-left: 120px;
+}
+
+.category-lis > h2 {
+  color: rgb(89, 66, 54);
+  font-weight: normal;
+  margin: 0;
+}
+
+
+
+/// D3 ///
+svg {
+  border: 2px solid rgb(64, 125, 194);
+  border-radius: 20px;
+}
+
 
 circle.branches {
   fill: rgba(241, 107, 30, 0.683);
@@ -11,9 +158,12 @@ circle.branches {
 circle.leaves {
   stroke: rgb(152, 199, 45);
   stroke-width: 2px;
+  fill: rgb(152, 199, 45);
 }
 
-text { font: 12px sans-serif; }
+text {
+  font-size: 12px;
+}
 
 .link {
   stroke: rgba(241, 107, 30, 0.683);
@@ -26,7 +176,11 @@ text { font: 12px sans-serif; }
   stroke-width: 12px;
 }
 
-.middle.branches, .link.leaves {
+circle.branches, circle.leaves {
+  fill-opacity: 80%;
+}
+
+link.branches, .link.leaves {
   stroke: rgb(89, 66, 54);
   
   fill-opacity: 30%;

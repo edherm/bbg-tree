@@ -1,39 +1,15 @@
 import convertFetchedData from "./convert_fetched_data";
 
-const klass = (d) => {
-  if (d.data.name.commonName) {
-    return "leaves"
-  } else if (d.depth === 4) {
-    return "upper branches"
-  } else if (d.depth === 3) {
-    return "middle branches"
-  } else if (d.depth === 2) {
-    return "lower branches"
-  } else {
-    return "trunk"
-  }
-}
+import { klass, onMouseOver, onMouseOut, click, diagonal } from "./d3_utils";
 
 export default () => {
-  const margin = { top: 25, right: 25, bottom: 25, left: 25 },
-    width = 1400 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
-
-  const orientations = {
-    "grow-up": {
-      size: [width, height],
-      x: function(d) {
-        return d.x;
-      },
-      y: function(d) {
-        return height - d.y;
-      }
-    }
-  };
+  const margin = { top: 35, right: 25, bottom: 35, left: 25 },
+    width = 1200 - margin.left - margin.right,
+    height = 850 - margin.top - margin.bottom;
 
   // .data(d3.entries(orientations))
   let svg = d3
-    .select("body")
+    .select("main")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.right)
@@ -54,29 +30,21 @@ export default () => {
     root.x0 = height / 2;
     root.y0 = 0;
 
-    // Collapse node and recursively collapse all children
-    // const collapse = d => {
-    //   if(d.children) {
-    //     d._children = d.children
-    //     d._children.forEach(collapse)
-    //     d.children = null
-    //   }
-    // }
-
     const update = source => {
       // Categorize nodes and links
       let nodes = treemap(root);
       const links = nodes.descendants().slice(1);
 
-      // Declare variables used for animation throughout
+      // Variables used for animation
       let i = 0;
-      const duration = 1500;
+      const duration = 1300;
 
       // Normalize depth
-      nodes.descendants().forEach(d => {d.y = d.depth * 150});
+      nodes.descendants().forEach(d => {d.y = d.depth * 200});  
+
       ///////// Nodes /////////
       // Update the nodes
-      let node = svg
+      const node = svg
         .selectAll("g.node")
         .data(nodes.descendants(), d => { return d.id || (d.id = ++i); })
 
@@ -86,8 +54,15 @@ export default () => {
         .append("g")
         .attr("class", "node")
         .attr("transform", d => { return `translate(${source.y0}, ${source.x0})`; })
-        .on('click', (d) => click(d));
-        
+        .on('click', (d) => {
+          click(d)
+          if (d.depth < 4) {
+            update(d)
+          }
+        })
+        .on('mouseover', d => onMouseOver(d))
+        .on('mouseout', d=> onMouseOut(d));
+      
       // Add Circle to nodes
       nodeEnter
         .append("circle")
@@ -96,7 +71,7 @@ export default () => {
         })
         .attr("r", 7)
         .style("fill", d => {
-          return d.children ? "rgb(89, 66, 54)" : "rgb(64, 125, 194)";
+          return d.children ? "rgb(89, 66, 54)" : "rgb(152, 199, 45)";
         });
 
       // Node labels
@@ -109,8 +84,11 @@ export default () => {
         })
         .attr("x", d => { return d.children || d._children ? -13 : 13; })
         .attr("dy", ".35em")
+        .attr("class", d => {
+          return `${klass(d)}`;
+        })
         .attr("text-anchor", d => { return d.children || d._children ? "end" : "start"; })
-
+      
       // Execute updating nodes
       const nodeUpdate = nodeEnter.merge(node);
 
@@ -134,22 +112,26 @@ export default () => {
         .remove();
 
       // Reduce exiting circles size to 0
-      nodeExit.select('.branches')
+      nodeExit.select('circle.branches', 'circle.leaves')
         .attr('r', 1e-6);
 
       // Reduce label opacity
       nodeExit.select('text')
         .style('fill-opacity', 1e-6);
+
+      // Add event listeners to leaves for info display  
+      d3.selectAll("circle.leaves")
+        .enter()
+        .on("mouseOver", d => {
+          debugger
+          return onMouseOver(d);
+        })
+        .on("mouseOut", d => {
+          debugger
+           return onMouseOut(d);
+        });
     
       ///////// Links /////////
-      // Create path between parent and child
-      const diagonal = (start, delta) => {
-        return `M ${start.y} ${start.x} 
-            C ${(start.y + delta.y) / 2} ${start.x},
-            ${(start.y + delta.y) / 2} ${delta.x},
-            ${delta.y} ${delta.x}`;
-      }
-
       // Update links
       let link = svg.selectAll(".link")
         .data(links, d => { return d.id });
@@ -158,9 +140,8 @@ export default () => {
       let linkEnter = link.enter()
         .insert("path", "g")
         .attr("class", d => { return `link ${klass(d)}`; })
-        .attr("d", d => { 
+        .attr("d", () => { 
           const start = {x: source.x0, y: source.y0}
-          debugger
           return diagonal(start, start) 
         });
 
@@ -171,7 +152,6 @@ export default () => {
       linkUpdate.transition()
         .duration(duration)
         .attr('d', d => { 
-          debugger
           return diagonal(d, d.parent); })
 
       // Remove any exiting links
@@ -179,7 +159,6 @@ export default () => {
         .duration(duration)
         .attr('d', d => { 
           const o = {x: source.x, y: source.y}
-          debugger
           return diagonal(o, o) 
         })
         .remove();
@@ -189,31 +168,20 @@ export default () => {
         d.x0 = d.x;
         d.y0 = d.y;
       });
+    } // Complete update function
 
-      // Handle click - set visibility property
-      const click = d => {
-        if (d.depth === 4) {
-          console.log("leaf node!")
-        } else if (d.children) {
-          d._children = d.children;
-          d.children = null;
-        } else {
-          d.children = d._children;
-          d._children = null;
-        }
-        update(d);
-        console.log(d)
+    // Initial node, circle, link, and text creation
+    update(root);
+
+    // Collapse all nodes past 'Collection' level
+    root.children[0].descendants().forEach(d => {
+      d._children = d.children;
+      if (d.depth > 1) {
+        d.children = null;
       }
-    }
+    });
 
-    // Recursively collapse all nodes each collection contains
-    // root.children[0].children.forEach(collection => {
-    //   collection.descendants().forEach(child => {
-    //     child._children = child.children;
-    //     child.children = null;
-    //   });
-    // });
-
-    update(root);    
-  });
+    // Update after initial collapse
+    update(root);
+  }/* Complete data fetch callback */);
 }
