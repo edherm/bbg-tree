@@ -2,7 +2,7 @@ import convertFetchedData from "./convert_fetched_data";
 
 const klass = (d) => {
   if (d.data.name.commonName) {
-    return "leaves"
+    return `leaves leaf${d.parent.parent.id}${d.parent.id}${d.id}`
   } else if (d.depth === 4) {
     return "upper branches"
   } else if (d.depth === 3) {
@@ -14,10 +14,26 @@ const klass = (d) => {
   }
 }
 
+const onMouseOver = d => {
+  console.log("hello")
+  console.log(d)
+  // let specs = d3
+  //   .selectAll(`.leaf${d.parent.parent.id}${d.parent.id}${d.id}`)
+  //   .append("div")
+  //   .attr("height", 20)
+  //   .attr("width", 20)
+  //   .attr("border", "1px solid black")
+
+}
+
+const onMouseOut = d => {
+  console.log("goodbye")
+}
+
 export default () => {
-  const margin = { top: 25, right: 25, bottom: 25, left: 25 },
-    width = 1400 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+  const margin = { top: 35, right: 25, bottom: 35, left: 25 },
+    width = 1200 - margin.left - margin.right,
+    height = 850 - margin.top - margin.bottom;
 
   const orientations = {
     "grow-up": {
@@ -33,7 +49,7 @@ export default () => {
 
   // .data(d3.entries(orientations))
   let svg = d3
-    .select("body")
+    .select("main")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.right)
@@ -53,27 +69,17 @@ export default () => {
     let root = d3.hierarchy(bbg_data, d => { return d.children });
     root.x0 = height / 2;
     root.y0 = 0;
-
-    // Collapse node and recursively collapse all children
-    // const collapse = d => {
-    //   if(d.children) {
-    //     d._children = d.children
-    //     d._children.forEach(collapse)
-    //     d.children = null
-    //   }
-    // }
-
     const update = source => {
       // Categorize nodes and links
       let nodes = treemap(root);
       const links = nodes.descendants().slice(1);
 
-      // Declare variables used for animation throughout
+      // Variables used for animation
       let i = 0;
-      const duration = 1500;
+      const duration = 1300;
 
       // Normalize depth
-      nodes.descendants().forEach(d => {d.y = d.depth * 150});
+      nodes.descendants().forEach(d => {d.y = d.depth * 200});
       ///////// Nodes /////////
       // Update the nodes
       let node = svg
@@ -96,7 +102,7 @@ export default () => {
         })
         .attr("r", 7)
         .style("fill", d => {
-          return d.children ? "rgb(89, 66, 54)" : "rgb(64, 125, 194)";
+          return d.children ? "rgb(89, 66, 54)" : "rgb(152, 199, 45)";
         });
 
       // Node labels
@@ -110,7 +116,7 @@ export default () => {
         .attr("x", d => { return d.children || d._children ? -13 : 13; })
         .attr("dy", ".35em")
         .attr("text-anchor", d => { return d.children || d._children ? "end" : "start"; })
-
+      
       // Execute updating nodes
       const nodeUpdate = nodeEnter.merge(node);
 
@@ -134,12 +140,24 @@ export default () => {
         .remove();
 
       // Reduce exiting circles size to 0
-      nodeExit.select('.branches')
+      nodeExit.select('circle.branches', 'circle.leaves')
         .attr('r', 1e-6);
 
       // Reduce label opacity
       nodeExit.select('text')
         .style('fill-opacity', 1e-6);
+
+      // Add event listeners to leaves for info display  
+      d3.selectAll("circle.leaves")
+        .enter()
+        .on("mouseOver", d => {
+          debugger
+          onMouseOver(d);
+        })
+        .on("mouseOut", d => {
+          debugger
+          onMouseOut(d);
+        });
     
       ///////// Links /////////
       // Create path between parent and child
@@ -160,7 +178,6 @@ export default () => {
         .attr("class", d => { return `link ${klass(d)}`; })
         .attr("d", d => { 
           const start = {x: source.x0, y: source.y0}
-          debugger
           return diagonal(start, start) 
         });
 
@@ -171,7 +188,6 @@ export default () => {
       linkUpdate.transition()
         .duration(duration)
         .attr('d', d => { 
-          debugger
           return diagonal(d, d.parent); })
 
       // Remove any exiting links
@@ -179,7 +195,6 @@ export default () => {
         .duration(duration)
         .attr('d', d => { 
           const o = {x: source.x, y: source.y}
-          debugger
           return diagonal(o, o) 
         })
         .remove();
@@ -190,10 +205,11 @@ export default () => {
         d.y0 = d.y;
       });
 
-      // Handle click - set visibility property
+      // Handle click - set visibility
       const click = d => {
         if (d.depth === 4) {
-          console.log("leaf node!")
+          console.log(d);
+          // displaySpecs(d);
         } else if (d.children) {
           d._children = d.children;
           d.children = null;
@@ -202,17 +218,16 @@ export default () => {
           d._children = null;
         }
         update(d);
-        console.log(d)
       }
     }
 
     // Recursively collapse all nodes each collection contains
-    // root.children[0].children.forEach(collection => {
-    //   collection.descendants().forEach(child => {
-    //     child._children = child.children;
-    //     child.children = null;
-    //   });
-    // });
+    root.children[0].children.forEach(collection => {
+      collection.descendants().forEach(child => {
+        child._children = child.children;
+        child.children = null;
+      });
+    });
 
     update(root);    
   });
