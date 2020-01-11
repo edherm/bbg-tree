@@ -18,7 +18,7 @@ export default (fetchedData) => {
       "children": hierarchicalData.map(home => {
 
         return {
-          "name": home.key,
+          "name": "bbg",
           "children": home.values.map(collection => {
 
             return {

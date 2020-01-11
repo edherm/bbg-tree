@@ -1,5 +1,4 @@
 import convertFetchedData from "./convert_fetched_data";
-
 import { klass, onMouseOver, onMouseOut, click, diagonal } from "./d3_utils";
 
 export default () => {
@@ -78,7 +77,7 @@ export default () => {
       nodeEnter
         .append("text")
         .text(d => {
-          if (d.depth > 0) {
+          if (d.depth > 1) {
             return d.data.name.commonName
               ? `- ${d.data.name.commonName} -`
               : `- ${d.data.name} -`; 
@@ -89,7 +88,6 @@ export default () => {
         .attr("class", d => {
           return `${klass(d)}`;
         })
-        .attr("background-color", "rgb(152, 199, 45)")
         .attr("text-anchor", d => { return d.children || d._children ? "end" : "start"; })
       
       // Execute updating nodes
@@ -104,7 +102,7 @@ export default () => {
       nodeUpdate.select('circle.branches')
         .attr('r', 7)
         .style("fill", d => { 
-          return d.children ? "rgb(89, 66, 54)" : "rgb(64, 125, 194)"; 
+          return d.children ? "grey" : "rgb(64, 125, 194)"; 
         })
         .attr('cursor', 'pointer');
 

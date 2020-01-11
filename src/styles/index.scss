@@ -1,16 +1,17 @@
 /// RESET ///
 
 h1, h3 {
-  font-family: 'Tinos', serif;
-  font-style: italic;
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 900;  
 }
 
 body {
  
 }
 
-body, li, text, h2 {
-  font-family: 'Arvo', serif;
+body, li, h2 {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: normal;
   color: rgb(64, 125, 194);
 }
 
@@ -142,7 +143,8 @@ li.category-lis.collection {
 }
 
 .category-lis > h2 {
-  color: grey;
+  color: black;
+  font-size: 18px;
   font-weight: normal;
   margin: 0;
 }
@@ -158,7 +160,6 @@ svg {
 
 
 circle.branches {
-  
   stroke-width: 3px;
   stroke: grey;
 }
@@ -174,8 +175,8 @@ text {
 }
 
 .link {
-  stroke: rgba(241, 107, 30, 0.683);
-  fill: grey;
+  stroke: #535353;
+  fill: #535353;
   fill-opacity: 30%;
 }
 
