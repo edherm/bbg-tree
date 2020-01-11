@@ -14,20 +14,17 @@ const klass = d => {
 
 const onMouseOver = d => {
   if (d.depth === 4) {
-    // console.log(d);
   }
 };
 
 const onMouseOut = d => {
   if (d.depth === 4) {
-    // console.log("goodbye");
   }
 };
 
 // Handle click - set visibility
 const click = d => {
   if (d.depth === 4) {
-    // console.log(d);
     // displaySpecs(d);
   } else if (d.children) {
     d._children = d.children;
