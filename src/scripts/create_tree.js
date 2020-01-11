@@ -71,7 +71,7 @@ export default () => {
         })
         .attr("r", 7)
         .style("fill", d => {
-          return d.children ? "rgb(89, 66, 54)" : "rgb(152, 199, 45)";
+          return d.children ? "grey" : "rgb(152, 199, 45)";
         });
 
       // Node labels
