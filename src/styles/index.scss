@@ -6,7 +6,7 @@ h1, h3 {
 }
 
 body {
- background-color: #cccccc;
+ 
 }
 
 body, li, text, h2 {
@@ -142,7 +142,7 @@ li.category-lis.collection {
 }
 
 .category-lis > h2 {
-  color: rgb(89, 66, 54);
+  color: grey;
   font-weight: normal;
   margin: 0;
 }
@@ -158,9 +158,9 @@ svg {
 
 
 circle.branches {
-  fill: rgba(241, 107, 30, 0.683);
+  
   stroke-width: 3px;
-  stroke: rgb(89, 66, 54);
+  stroke: grey;
 }
 
 circle.leaves {
@@ -175,12 +175,12 @@ text {
 
 .link {
   stroke: rgba(241, 107, 30, 0.683);
-  fill: rgb(89, 66, 54);
+  fill: grey;
   fill-opacity: 30%;
 }
 
 .link.trunk {
-  stroke: rgb(89, 66, 54);
+  stroke: grey;
   stroke-width: 12px;
 }
 
@@ -189,7 +189,7 @@ circle.branches, circle.leaves {
 }
 
 link.branches, .link.leaves {
-  stroke: rgb(89, 66, 54);
+  stroke: grey;
   
   fill-opacity: 30%;
 }
