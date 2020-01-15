@@ -1,22 +1,17 @@
 /// RESET ///
 
-h1, h3 {
+h1, h2, h3, body, li {
   font-family: 'Public Sans', sans-serif;
-  font-weight: 900;  
 }
 
-body {
- 
+
+h1, h3 {
+  font-weight: 900;  
+  color: rgb(64, 125, 194);
 }
 
 body, li, h2 {
-  font-family: 'Public Sans', sans-serif;
   font-weight: normal;
-  color: rgb(64, 125, 194);
-}
-
-text.trunk {
-  color: rgb(64, 125, 194);
 }
 
 body {
@@ -65,7 +60,7 @@ img.link-logo {
 .header-center {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .header-center > h1 {
