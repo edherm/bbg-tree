@@ -1,22 +1,16 @@
 /// RESET ///
 
-h1, h3 {
+h1, h2, h3, body, li {
   font-family: 'Public Sans', sans-serif;
-  font-weight: 900;  
 }
 
-body {
- 
+h1, h3 {
+  font-weight: 900;  
+  color: rgb(64, 125, 194);
 }
 
 body, li, h2 {
-  font-family: 'Public Sans', sans-serif;
   font-weight: normal;
-  color: rgb(64, 125, 194);
-}
-
-text.trunk {
-  color: rgb(64, 125, 194);
 }
 
 body {
@@ -34,16 +28,32 @@ ul {
   list-style: none;
 }
 
-main {
+.content-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+
+}
+
+main, svg, .info-container, .info-container > div {
+  border: 2px solid rgb(64, 125, 194);
+  border-radius: 20px;
+}
+
+.info-container, main {
+  background-color: #535353;
+}
+
+.info-container > div, svg {
+  background-color: white;
+  -moz-box-shadow: inset 5px 5px 5px 5px grey;
+  -webkit-box-shadow: inset 5px 5px 5px 5px grey;
+  box-shadow: inset 5px 5px 5px 5px grey;
 }
 
 /// Header ///
 header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-around;
   width: 1200px;
 }
 
@@ -65,7 +75,6 @@ img.link-logo {
 .header-center {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .header-center > h1 {
@@ -74,6 +83,7 @@ img.link-logo {
 
 .header-center > h3 {
   margin-top: 0;
+
 }
 
 .header-left {
@@ -84,22 +94,6 @@ img.link-logo {
 
 .header-left > img {
   height: 120px;
-}
-
-/// Footer ///
-footer {
-  display: flex;
-}
-
-footer > h3 {
-  display: flex;
-}
-
-footer > ul {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  margin-top: 0;
 }
 
 /// Main ///
@@ -149,15 +143,13 @@ li.category-lis.collection {
   margin: 0;
 }
 
-
-
 /// D3 ///
 svg {
   border: 2px solid rgb(64, 125, 194);
   border-radius: 20px;
   z-index: 2;
+  margin: 20px;
 }
-
 
 circle.branches {
   stroke-width: 3px;
@@ -175,13 +167,13 @@ text {
 }
 
 .link {
-  stroke: #535353;
+  stroke: grey;
   fill: #535353;
   fill-opacity: 30%;
 }
 
 .link.trunk {
-  stroke: grey;
+  stroke: #535353;
   stroke-width: 12px;
 }
 
@@ -206,3 +198,24 @@ link.middle.branches {
 .link.leaves {
   stroke-width: 1px;
 }
+
+///// Aside /////
+.info-container {
+  height: 100%;
+  width: 250px;
+  margin-left: 25px;
+}
+.info-container > div {
+  margin: 20px;
+  padding: 15px;
+}
+
+.info-h3 {
+  text-align: center;
+}
+
+.info-ul {
+  padding: 20px;
+  list-style-type: disc;
+}
+

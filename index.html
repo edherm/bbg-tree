@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156174433-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-156174433-3');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Public+Sans:400,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./dist/main.css" />
   <script src="https://d3js.org/d3.v5.js"></script>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <title>BBG Explorer Tree</title>
 </head>
 <body>
   <header>
-    <div class="header-left">
-      <!-- <img src="https://www.bbg.org/images/bbg_logo.svg?v=1" alt="BBG Logo"> -->
-    </div>
+    <!-- <div class="header-left">
+      <img src="https://www.bbg.org/images/bbg_logo.svg?v=1" alt="BBG Logo">
+    </div> -->
     <div class="header-center">
       <h1>BROOKLYN BOTANICAL GARDEN TREE EXPLORER</h1>
-      <h3>Conceived and programmed by: <a href="">Ed Herman</a></h3>
+      <h3>Conceived and programmed by: <a target="_blank" href="https://edherm.github.io/">Ed Herman</a></h3>
+
     </div>
     <div class="header-right">
       <ul>
         <li>
-          <a href="https://www.linkedin.com/in/ed-herman-03892335/">
+          <a target="_blank" href="https://www.linkedin.com/in/ed-herman/">
             <img src="https://cdn3.iconfinder.com/data/icons/capsocial-round/500/linkedin-512.png" alt="LinkedIn Logo" class="link-logo">
           </a>
         </li>
         <li>
-          <a href="https://angel.co/ed-herman?public_profile=1">
+          <a target="_blank" href="https://angel.co/ed-herman?public_profile=1">
             <img src="https://cdn0.iconfinder.com/data/icons/picons-social/57/69-angellist-512.png" alt="AngelList Logo" class="link-logo">
           </a>
         </li>
         <li>
-          <a href="https://github.com/edherm/BBG-tree-explorer">
+          <a target="_blank" href="https://github.com/edherm/BBG-tree-explorer">
             <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/mark-github-512.png" alt="Github Logo" class="link-logo">
           </a>
         </li>
@@ -39,23 +49,37 @@
       </ul>
     </div>
   </header>
-  <main>
-    <ul class="category-ul-top">
-      <li class="category-lis collection"><h2>COLLECTION</h2></li class="category-lis">
-      <li class="category-lis genus"><h2>GENUS</h2></li>
-      <li class="category-lis specimen"><h2>SPECIMEN</h2></li>
-    </ul>
-    <ul class="category-ul-bottom">
-      <li class="category-lis collection"><h2>COLLECTION</h2></li class="category-lis">
-      <li class="category-lis genus"><h2>GENUS</h2></li>
-      <li class="category-lis specimen"><h2>SPECIMEN</h2></li>
-    </ul>
-  </main>
-  <script src="./dist/main.js"></script>
+  <div class="content-container">
+    <main>
+      <!-- <ul class="category-ul-top">
+        <li class="category-lis collection"><h2>COLLECTION</h2></li class="category-lis">
+        <li class="category-lis genus"><h2>GENUS</h2></li>
+        <li class="category-lis specimen"><h2>SPECIMEN</h2></li>
+      </ul>
+      <ul class="category-ul-bottom">
+        <li class="category-lis collection"><h2>COLLECTION</h2></li class="category-lis">
+        <li class="category-lis genus"><h2>GENUS</h2></li>
+        <li class="category-lis specimen"><h2>SPECIMEN</h2></li>
+      </ul> -->
+      <script src="./dist/main.js"></script>
+    </main>
+    <aside>
+      <div class="info-container">
+        <div>
+          <h3 class="info-h3">Additional Information</h3>
+          <ul class="info-ul">
+            <li>The tree expands from a garden collection, to genera, and finally to an individual plant specimen.</li>
+            <li>Click on a circle node to explore the next layer of data.</li>
+          </ul>
+        </div>
+        <div>
+          <p>Source:</p>
+          <a href="https://www.bbg.org/cgi/plant-records/search.cgi">BBG's Plant-Records Search</a>
+        </div>
+      </div>
+    </aside>
+  </div>
   <footer>
-    <h3 value="Source: ">
-      <a href="https://www.bbg.org/cgi/plant-records/search.cgi">Source: BBG's Plant-Records Search</a>
-    </h3>
   </footer>
 </body>
 </html>
