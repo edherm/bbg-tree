@@ -26,6 +26,7 @@
     <div class="header-center">
       <h1>BROOKLYN BOTANICAL GARDEN TREE EXPLORER</h1>
       <h3>Conceived and programmed by: <a target="_blank" href="https://edherm.github.io/">Ed Herman</a></h3>
+
     </div>
     <div class="header-right">
       <ul>
@@ -48,23 +49,37 @@
       </ul>
     </div>
   </header>
-  <main>
-    <ul class="category-ul-top">
-      <li class="category-lis collection"><h2>COLLECTION</h2></li class="category-lis">
-      <li class="category-lis genus"><h2>GENUS</h2></li>
-      <li class="category-lis specimen"><h2>SPECIMEN</h2></li>
-    </ul>
-    <ul class="category-ul-bottom">
-      <li class="category-lis collection"><h2>COLLECTION</h2></li class="category-lis">
-      <li class="category-lis genus"><h2>GENUS</h2></li>
-      <li class="category-lis specimen"><h2>SPECIMEN</h2></li>
-    </ul>
-  </main>
-  <script src="./dist/main.js"></script>
+  <div class="content-container">
+    <main>
+      <!-- <ul class="category-ul-top">
+        <li class="category-lis collection"><h2>COLLECTION</h2></li class="category-lis">
+        <li class="category-lis genus"><h2>GENUS</h2></li>
+        <li class="category-lis specimen"><h2>SPECIMEN</h2></li>
+      </ul>
+      <ul class="category-ul-bottom">
+        <li class="category-lis collection"><h2>COLLECTION</h2></li class="category-lis">
+        <li class="category-lis genus"><h2>GENUS</h2></li>
+        <li class="category-lis specimen"><h2>SPECIMEN</h2></li>
+      </ul> -->
+      <script src="./dist/main.js"></script>
+    </main>
+    <aside>
+      <div class="info-container">
+        <div>
+          <h3 class="info-h3">Additional Information</h3>
+          <ul class="info-ul">
+            <li>The tree expands from a garden collection, to genera, and finally to an individual plant specimen.</li>
+            <li>Click on a circle node to explore the next layer of data.</li>
+          </ul>
+        </div>
+        <div>
+          <p>Source:</p>
+          <a href="https://www.bbg.org/cgi/plant-records/search.cgi">BBG's Plant-Records Search</a>
+        </div>
+      </div>
+    </aside>
+  </div>
   <footer>
-    <h3 value="Source: ">
-      <a href="https://www.bbg.org/cgi/plant-records/search.cgi">Source: BBG's Plant-Records Search</a>
-    </h3>
   </footer>
 </body>
 </html>

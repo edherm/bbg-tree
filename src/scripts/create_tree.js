@@ -2,8 +2,8 @@ import convertFetchedData from "./convert_fetched_data";
 import { klass, onMouseOver, onMouseOut, click, diagonal } from "./d3_utils";
 
 export default () => {
-  const margin = { top: 35, right: 25, bottom: 35, left: 25 },
-    width = 1200 - margin.left - margin.right,
+  const margin = { top: 35, right: 50, bottom: 35, left: -50 },
+    width = 700 - margin.left - margin.right,
     height = 850 - margin.top - margin.bottom;
 
   // .data(d3.entries(orientations))
@@ -39,7 +39,7 @@ export default () => {
       const duration = 1300;
 
       // Normalize depth
-      nodes.descendants().forEach(d => {d.y = d.depth * 200});  
+      nodes.descendants().forEach(d => {d.y = d.depth * 150});  
 
       ///////// Nodes /////////
       // Update the nodes
