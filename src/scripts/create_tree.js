@@ -3,7 +3,7 @@ import { klass, onMouseOver, onMouseOut, click, diagonal } from "./d3_utils";
 
 export default () => {
   const margin = { top: 35, right: 50, bottom: 35, left: -50 },
-    width = 700 - margin.left - margin.right,
+    width = 850 - margin.left - margin.right,
     height = 850 - margin.top - margin.bottom;
 
   // .data(d3.entries(orientations))
