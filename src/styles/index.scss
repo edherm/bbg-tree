@@ -57,20 +57,26 @@ header {
   width: 1200px;
 }
 
-img.link-logo {
-  height: 40px;
-}
-
 .header-right {
   display: flex;
   justify-content: flex-end;
-  margin-right: 20px;
+  
+  ul {
+    display: flex;
+    margin-left: 0;
+
+    li {
+      
+      img.link-logo {
+        width: 40px;
+        color: black;
+        margin-left: 10px;
+      }
+    }
+  }
 }
 
-.header-right > ul {
-  display: flex;
-  margin-left: 0;
-}
+
 
 .header-center {
   display: flex;
