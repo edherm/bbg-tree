@@ -2,7 +2,11 @@ import convertFetchedData from "./convert_fetched_data";
 import { klass, onMouseOver, onMouseOut, click, diagonal } from "./d3_utils";
 
 export default () => {
-  const margin = { top: 35, right: 50, bottom: 35, left: 80 },
+  const collection = "Bonsai";
+  const sides = collection.length < 10 ? (100) : (
+    collection.length < 20 ? (150): (225));
+  
+  const margin = { top: 35, right: sides, bottom: 35, left: sides },
     width = 850 - margin.left - margin.right,
     height = 850 - margin.top - margin.bottom;
 
@@ -18,7 +22,7 @@ export default () => {
   // Load and convert csv data => each row becomes an object with columns as keys
   d3.csv("src/data/bbg_data191204.csv").then(function(data) {
     // Convert data to hierarchical structure
-    let bbg_data = convertFetchedData(data, 'Bonsai');
+    let bbg_data = convertFetchedData(data, collection);
 
     // Create tree and assign size from orientations
     let treemap = d3.tree().size([height, width]);
@@ -35,7 +39,7 @@ export default () => {
 
       // Variables used for animation
       let i = 0;
-      const duration = 1300;
+      const duration = 1100;
 
       // Normalize depth
       nodes.descendants().forEach(d => {d.y = d.depth * 150});  
@@ -54,7 +58,7 @@ export default () => {
         .attr("transform", d => { return `translate(${source.y0}, ${source.x0})`; })
         .on('click', (d) => {
           click(d)
-          if (d.depth < 4) {
+          if (d.depth < 3) {
             update(d)
           }
         })
@@ -76,11 +80,9 @@ export default () => {
       nodeEnter
         .append("text")
         .text(d => {
-          // if (d.depth > 0) {
-            return d.data.name.commonName
-              ? `- ${d.data.name.commonName} -`
-              : `- ${d.data.name} -`; 
-          // }
+          return d.data.name.commonName
+            ? `- ${d.data.name.commonName} -`
+            : `- ${d.data.name} -`; 
         })
         .attr("x", d => { return d.children || d._children ? -13 : 13; })
         .attr("dy", ".35em")
@@ -171,15 +173,15 @@ export default () => {
     // Initial node, circle, link, and text creation
     update(root);
 
-    // Collapse all nodes past 'Collection' level
-    root.children[0].descendants().forEach(d => {
-      d._children = d.children;
-      if (d.depth > 1) {
-        d.children = null;
-      }
-    });
+    // Collapse all nodes past 'Genus' level after initial render
+    let n = 1116;
+    root.children.forEach(d => {
+      setTimeout( () => {
+        click(d);
+        update(d);
+      }, n)
+      n = n + 1116
+    })
 
-    // Update after initial collapse
-    update(root);
   }); // Complete data fetch
 }

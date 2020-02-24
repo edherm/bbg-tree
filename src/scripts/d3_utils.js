@@ -25,7 +25,8 @@ const onMouseOut = d => {
 
 // Handle click - set visibility
 const click = d => {
-  if (d.depth === 4) {
+  console.log(d)
+  if (d.depth === 3) {
     // displaySpecs(d);
   } else if (d.children) {
     d._children = d.children;
@@ -33,7 +34,7 @@ const click = d => {
   } else {
     d.children = d._children;
     d._children = null;
-    console.log(d);
+    // console.log(d);
   }
 }
 
