@@ -1,34 +1,43 @@
 import convertFetchedData from "./convert_fetched_data";
-import { klass, onMouseOver, onMouseOut, click, diagonal } from "./d3_utils";
+import { klass, onMouseOver, onMouseOut, click, diagonal, selection } from "./d3_utils";
+import collectionDropdown from "./collection_dropdown";
 
 export default () => {
-  const collection = "Bonsai";
-  const sides = collection.length < 10 ? (100) : (
-    collection.length < 20 ? (150): (225));
+  let collection = selection();
+  // const sides = collection.length < 10 ? (100) : (
+  //   collection.length < 20 ? (150): (225));
   
-  const margin = { top: 35, right: sides, bottom: 35, left: sides },
+  const margin = { top: 35, right: 75, bottom: 35, left: 75 },
     width = 850 - margin.left - margin.right,
     height = 850 - margin.top - margin.bottom;
 
-  // .data(d3.entries(orientations))
-  let svg = d3
-    .select("main")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.right)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  // let collectionDropdown = document.getElementById("main")
+    // .appendChild()
+
+  
 
   // Load and convert csv data => each row becomes an object with columns as keys
   d3.csv("src/data/bbg_data191204.csv").then(function(data) {
     // Convert data to hierarchical structure
-    let bbg_data = convertFetchedData(data, collection);
+    let bbg_data = convertFetchedData(data);
+    // debugger
 
+    // Create Collection Form
+    collectionDropdown(Object.keys(bbg_data))
+
+    // Create svg window
+    let svg = d3
+      .select("main")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.right)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     // Create tree and assign size from orientations
     let treemap = d3.tree().size([height, width]);
 
     // Assign root node
-    let root = d3.hierarchy(bbg_data, d => { return d.children });
+    let root = d3.hierarchy(bbg_data[collection], d => { return d.children });
     root.x0 = height / 2;
     root.y0 = 0;
 
@@ -80,9 +89,11 @@ export default () => {
       nodeEnter
         .append("text")
         .text(d => {
-          return d.data.name.commonName
-            ? `- ${d.data.name.commonName} -`
-            : `- ${d.data.name} -`; 
+          if (d.depth > 0) {
+            return d.data.name.commonName
+              ? `- ${d.data.name.commonName} -`
+              : `- ${d.data.name} -`; 
+          }
         })
         .attr("x", d => { return d.children || d._children ? -13 : 13; })
         .attr("dy", ".35em")

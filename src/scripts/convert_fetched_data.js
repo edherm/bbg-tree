@@ -1,4 +1,4 @@
-export default (fetchedData, subset) => {
+export default (fetchedData) => {
   // Convert data to hierarchical structure
     const hierarchicalData = d3.nest()
       .key(function(d) { 
@@ -35,11 +35,6 @@ export default (fetchedData, subset) => {
         })
       }
     })
-          // })
-        // }
-      // } )
-    // }
-
-  debugger
-  return shapedHierarchicalData[subset];
+    
+  return shapedHierarchicalData;
 }

@@ -1,5 +1,4 @@
 const klass = d => {
-  debugger
   if (d.data.name.commonName) {
     return `leaves leaf${d.parent.parent.id}${d.parent.id}${d.id}`;
   } else if (d.depth === 3) {
@@ -25,16 +24,14 @@ const onMouseOut = d => {
 
 // Handle click - set visibility
 const click = d => {
-  console.log(d)
-  if (d.depth === 3) {
-    // displaySpecs(d);
-  } else if (d.children) {
+  
+  if (d.children) {
     d._children = d.children;
     d.children = null;
   } else {
     d.children = d._children;
     d._children = null;
-    // console.log(d);
+
   }
 }
 
@@ -45,4 +42,13 @@ const diagonal = (start, delta) => {
             ${delta.y} ${delta.x}`;
 };
 
-module.exports = {klass, onMouseOver, onMouseOut, click, diagonal}
+const selection = () => {
+  let sel = document.getElementById("collections")
+  if (sel) {
+    return sel.options[sel.selectedIndex]
+  } else {
+    return "Bonsai"
+  }
+}
+
+module.exports = {klass, onMouseOver, onMouseOut, click, diagonal, selection}
