@@ -1,11 +1,12 @@
 const klass = d => {
+  debugger
   if (d.data.name.commonName) {
     return `leaves leaf${d.parent.parent.id}${d.parent.id}${d.id}`;
-  } else if (d.depth === 4) {
-    return "upper branches";
   } else if (d.depth === 3) {
-    return "middle branches";
+    return "upper branches";
   } else if (d.depth === 2) {
+    return "middle branches";
+  } else if (d.depth === 1) {
     return "lower branches";
   } else {
     return "trunk";
@@ -32,6 +33,7 @@ const click = d => {
   } else {
     d.children = d._children;
     d._children = null;
+    console.log(d);
   }
 }
 

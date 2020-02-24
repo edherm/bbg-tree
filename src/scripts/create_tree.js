@@ -2,7 +2,7 @@ import convertFetchedData from "./convert_fetched_data";
 import { klass, onMouseOver, onMouseOut, click, diagonal } from "./d3_utils";
 
 export default () => {
-  const margin = { top: 35, right: 50, bottom: 35, left: -50 },
+  const margin = { top: 35, right: 50, bottom: 35, left: 80 },
     width = 850 - margin.left - margin.right,
     height = 850 - margin.top - margin.bottom;
 
@@ -17,9 +17,8 @@ export default () => {
 
   // Load and convert csv data => each row becomes an object with columns as keys
   d3.csv("src/data/bbg_data191204.csv").then(function(data) {
-    
     // Convert data to hierarchical structure
-    let bbg_data = convertFetchedData(data);
+    let bbg_data = convertFetchedData(data, 'Bonsai');
 
     // Create tree and assign size from orientations
     let treemap = d3.tree().size([height, width]);
@@ -77,11 +76,11 @@ export default () => {
       nodeEnter
         .append("text")
         .text(d => {
-          if (d.depth > 1) {
+          // if (d.depth > 0) {
             return d.data.name.commonName
               ? `- ${d.data.name.commonName} -`
               : `- ${d.data.name} -`; 
-          }
+          // }
         })
         .attr("x", d => { return d.children || d._children ? -13 : 13; })
         .attr("dy", ".35em")
@@ -182,5 +181,5 @@ export default () => {
 
     // Update after initial collapse
     update(root);
-  }/* Complete data fetch callback */);
+  }); // Complete data fetch
 }
