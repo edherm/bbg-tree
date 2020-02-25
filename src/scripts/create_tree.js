@@ -1,9 +1,8 @@
 import convertFetchedData from "./convert_fetched_data";
-import { klass, onMouseOver, onMouseOut, click, diagonal } from "./d3_utils";
+import { klass, onMouseOver, onMouseOut, click, diagonal, selection } from "./d3_utils";
 import collectionDropdown from "./collection_dropdown";
 
 export default () => {
-  let selection = "Bonsai"
   // const sides = collection.length < 10 ? (100) : (
   //   collection.length < 20 ? (150): (225));
   
@@ -11,19 +10,23 @@ export default () => {
     width = 850 - margin.left - margin.right,
     height = 850 - margin.top - margin.bottom;
 
-  // let collectionDropdown = document.getElementById("main")
-    // .appendChild()
-
   
 
   // Load and convert csv data => each row becomes an object with columns as keys
   d3.csv("src/data/bbg_data191204.csv").then(function(data) {
     // Convert data to hierarchical structure
     let bbg_data = convertFetchedData(data);
-    // debugger
 
     // Create Collection Form
     collectionDropdown(Object.keys(bbg_data))
+
+    const collectionsSubmit = document.getElementById("collectionSubmit")
+      collectionsSubmit.onclick = (e) => {
+        e.preventDefault()
+        findRoot()
+        update(root);
+        debugger
+      }
 
     // Create svg window
     let svg = d3
@@ -38,14 +41,21 @@ export default () => {
 
     // Assign root node
     let root;
-    root = d3.hierarchy(bbg_data[selection], d => {
+    const findRoot = () => {
+      root = d3.hierarchy(bbg_data[selection()], d => {
       return d.children;
-    });
-
-    const update = source => {
-      // root = d3.hierarchy(bbg_data[selection], d => { return d.children });
+      });
       root.x0 = height / 2;
       root.y0 = 0;
+    }
+    const update = source => {
+      if (
+        source.depth === 0
+      ) {
+        debugger;
+        findRoot();
+      }
+      
       // Categorize nodes and links
       let nodes = treemap(root);
       const links = nodes.descendants().slice(1);
@@ -186,9 +196,11 @@ export default () => {
     } // Complete update function
 
     // Initial node, circle, link, and text creation
+    findRoot();
     update(root);
 
     // Collapse all nodes past 'Genus' level after initial render
+
     let n = 1116;
     root.children.forEach(d => {
       setTimeout( () => {

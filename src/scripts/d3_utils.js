@@ -43,12 +43,9 @@ const diagonal = (start, delta) => {
 };
 
 const selection = () => {
-  let sel = document.getElementById("collections")
-  if (sel) {
-    return sel.options[sel.selectedIndex]
-  } else {
-    return "Bonsai"
-  }
+  const collections = document.getElementById("collections");
+  const i = collections.selectedIndex === 0 ? 1 : collections.selectedIndex;
+  return collections.options[i].text;
 }
 
 module.exports = {klass, onMouseOver, onMouseOut, click, diagonal, selection}
