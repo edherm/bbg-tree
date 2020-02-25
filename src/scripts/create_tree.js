@@ -1,9 +1,9 @@
 import convertFetchedData from "./convert_fetched_data";
-import { klass, onMouseOver, onMouseOut, click, diagonal, selection } from "./d3_utils";
+import { klass, onMouseOver, onMouseOut, click, diagonal } from "./d3_utils";
 import collectionDropdown from "./collection_dropdown";
 
 export default () => {
-  let collection = selection();
+  let selection = "Bonsai"
   // const sides = collection.length < 10 ? (100) : (
   //   collection.length < 20 ? (150): (225));
   
@@ -37,11 +37,15 @@ export default () => {
     let treemap = d3.tree().size([height, width]);
 
     // Assign root node
-    let root = d3.hierarchy(bbg_data[collection], d => { return d.children });
-    root.x0 = height / 2;
-    root.y0 = 0;
+    let root;
+    root = d3.hierarchy(bbg_data[selection], d => {
+      return d.children;
+    });
 
     const update = source => {
+      // root = d3.hierarchy(bbg_data[selection], d => { return d.children });
+      root.x0 = height / 2;
+      root.y0 = 0;
       // Categorize nodes and links
       let nodes = treemap(root);
       const links = nodes.descendants().slice(1);
