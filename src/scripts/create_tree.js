@@ -33,7 +33,6 @@ export default () => {
           update(root);
           collapse();
         }, 1120)
-        debugger
       }
 
     // Create svg window

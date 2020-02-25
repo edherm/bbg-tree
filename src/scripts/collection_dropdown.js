@@ -19,15 +19,10 @@ export default (collections) => {
       .createElement("option");
     collectionOption
       .setAttribute("value", collection);
-      
-    collectionOption.addEventListener("click", () => {
-      debugger
-    })
+
     collectionOption.innerHTML = collection;
-      // collectionOption.onclick = 
     
     collectionSelect.append(collectionOption)
-    // debugger
   })
   
   collectionForm.append(collectionSelect);
