@@ -23,8 +23,16 @@ export default () => {
     const collectionsSubmit = document.getElementById("collectionSubmit")
       collectionsSubmit.onclick = (e) => {
         e.preventDefault()
-        findRoot()
+        // Collapse to root
+        click(root); 
         update(root);
+
+        // After root collapses, change collection, draw tree, and collapse
+        setTimeout( () => {
+          changeCollection();
+          update(root);
+          collapse();
+        }, 1120)
         debugger
       }
 
@@ -41,7 +49,7 @@ export default () => {
 
     // Assign root node
     let root;
-    const findRoot = () => {
+    const changeCollection = () => {
       root = d3.hierarchy(bbg_data[selection()], d => {
       return d.children;
       });
@@ -49,12 +57,6 @@ export default () => {
       root.y0 = 0;
     }
     const update = source => {
-      if (
-        source.depth === 0
-      ) {
-        debugger;
-        findRoot();
-      }
       
       // Categorize nodes and links
       let nodes = treemap(root);
@@ -195,20 +197,23 @@ export default () => {
       });
     } // Complete update function
 
-    // Initial node, circle, link, and text creation
-    findRoot();
-    update(root);
-
     // Collapse all nodes past 'Genus' level after initial render
+    const collapse = () => {
+      let n = 1120;
+      root.children.forEach(d => {
+        setTimeout( () => {
+          click(d);
+          update(d);
+        }, n)
+        n = n + 1120
+      })
+    }
 
-    let n = 1116;
-    root.children.forEach(d => {
-      setTimeout( () => {
-        click(d);
-        update(d);
-      }, n)
-      n = n + 1116
-    })
+
+    // Initial node, circle, link, and text creation
+    changeCollection();
+    update(root);
+    collapse();
 
   }); // Complete data fetch
 }
