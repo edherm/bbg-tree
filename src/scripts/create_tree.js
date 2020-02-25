@@ -1,42 +1,70 @@
 import convertFetchedData from "./convert_fetched_data";
-import { klass, onMouseOver, onMouseOut, click, diagonal } from "./d3_utils";
+import { klass, onMouseOver, onMouseOut, click, diagonal, selection } from "./d3_utils";
+import collectionDropdown from "./collection_dropdown";
 
 export default () => {
-  const margin = { top: 35, right: 50, bottom: 35, left: -50 },
+  // const sides = collection.length < 10 ? (100) : (
+  //   collection.length < 20 ? (150): (225));
+  
+  const margin = { top: 35, right: 75, bottom: 35, left: 75 },
     width = 850 - margin.left - margin.right,
     height = 850 - margin.top - margin.bottom;
 
-  // .data(d3.entries(orientations))
-  let svg = d3
-    .select("main")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.right)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  
 
   // Load and convert csv data => each row becomes an object with columns as keys
   d3.csv("src/data/bbg_data191204.csv").then(function(data) {
-    
     // Convert data to hierarchical structure
     let bbg_data = convertFetchedData(data);
 
+    // Create Collection Form
+    collectionDropdown(Object.keys(bbg_data))
+
+    const collectionsSubmit = document.getElementById("collectionSubmit")
+      collectionsSubmit.onclick = (e) => {
+        e.preventDefault()
+        // Collapse to root
+        click(root); 
+        update(root);
+
+        // After root collapses, change collection, draw tree, and collapse
+        setTimeout( () => {
+          changeCollection();
+          update(root);
+          collapse();
+        }, 1120)
+        debugger
+      }
+
+    // Create svg window
+    let svg = d3
+      .select("main")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.right)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     // Create tree and assign size from orientations
     let treemap = d3.tree().size([height, width]);
 
     // Assign root node
-    let root = d3.hierarchy(bbg_data, d => { return d.children });
-    root.x0 = height / 2;
-    root.y0 = 0;
-
+    let root;
+    const changeCollection = () => {
+      root = d3.hierarchy(bbg_data[selection()], d => {
+      return d.children;
+      });
+      root.x0 = height / 2;
+      root.y0 = 0;
+    }
     const update = source => {
+      
       // Categorize nodes and links
       let nodes = treemap(root);
       const links = nodes.descendants().slice(1);
 
       // Variables used for animation
       let i = 0;
-      const duration = 1300;
+      const duration = 1100;
 
       // Normalize depth
       nodes.descendants().forEach(d => {d.y = d.depth * 150});  
@@ -55,7 +83,7 @@ export default () => {
         .attr("transform", d => { return `translate(${source.y0}, ${source.x0})`; })
         .on('click', (d) => {
           click(d)
-          if (d.depth < 4) {
+          if (d.depth < 3) {
             update(d)
           }
         })
@@ -77,7 +105,7 @@ export default () => {
       nodeEnter
         .append("text")
         .text(d => {
-          if (d.depth > 1) {
+          if (d.depth > 0) {
             return d.data.name.commonName
               ? `- ${d.data.name.commonName} -`
               : `- ${d.data.name} -`; 
@@ -169,18 +197,23 @@ export default () => {
       });
     } // Complete update function
 
+    // Collapse all nodes past 'Genus' level after initial render
+    const collapse = () => {
+      let n = 1120;
+      root.children.forEach(d => {
+        setTimeout( () => {
+          click(d);
+          update(d);
+        }, n)
+        n = n + 1120
+      })
+    }
+
+
     // Initial node, circle, link, and text creation
+    changeCollection();
     update(root);
+    collapse();
 
-    // Collapse all nodes past 'Collection' level
-    root.children[0].descendants().forEach(d => {
-      d._children = d.children;
-      if (d.depth > 1) {
-        d.children = null;
-      }
-    });
-
-    // Update after initial collapse
-    update(root);
-  }/* Complete data fetch callback */);
+  }); // Complete data fetch
 }
