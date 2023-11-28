@@ -1,3 +1,5 @@
+$emphasis-color: rgb(64, 125, 194);
+
 /// RESET ///
 
 h1, h2, h3, body, li {
@@ -6,7 +8,7 @@ h1, h2, h3, body, li {
 
 h1, h3 {
   font-weight: 900;  
-  color: rgb(64, 125, 194);
+  color: $emphasis-color;
 }
 
 body, li, h2 {
@@ -35,7 +37,7 @@ ul {
 }
 
 main, svg, .info-container, .info-container > div {
-  border: 2px solid rgb(64, 125, 194);
+  border: 2px solid $emphasis-color;
   border-radius: 20px;
 }
 
@@ -93,8 +95,14 @@ main {
   form {
     margin: 5px 0;
 
-    select{
+    label {
+      color: white;
       margin-right: 20px;
+    }
+
+    select {
+      border: 2px solid $emphasis-color;
+      border-radius: 9px;
     }
   }
 }
@@ -103,7 +111,7 @@ main {
 
 /// D3 ///
 svg {
-  border: 2px solid rgb(64, 125, 194);
+  border: 2px solid $emphasis-color;
   border-radius: 20px;
   z-index: 2;
   margin: 5px 25px 25px 25px;
